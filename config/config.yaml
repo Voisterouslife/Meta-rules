@@ -173,7 +173,7 @@ rule-providers:
       behavior: classical
       format: yaml
       path: ./rule/Emby.yaml
-      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/emby.yaml?token=GHSAT0AAAAAACXFI5X3F6TY4E4YOXHC2LAWZW4NWLQ"
+      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/emby.yaml"
       interval: 86400      
 
 
