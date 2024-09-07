@@ -103,7 +103,7 @@ u: &u
 proxy-providers:
   机场1:
     <<: *p
-    url: "https://suc2.sntp.io/baseStr?token=f13a8368217d64ede04ad1a09d53ba3f"
+    url: ""
     path: ./proxy_providers/sub1.yaml
     #注意！如果您的订阅链接中带有“&”字符，请删掉.
 
