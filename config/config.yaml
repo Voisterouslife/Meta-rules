@@ -75,7 +75,7 @@ dns:
   respect-rules: true
   enhanced-mode: fake-ip
   fake-ip-filter:
-   - "*"
+    - "*"
     - +.lan
     - +.local
     - time.*.com
