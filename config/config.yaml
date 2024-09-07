@@ -1,0 +1,186 @@
+mixed-port: 7890
+redir-port: 7891
+tproxy-port: 1536
+allow-lan: true
+ipv6: true
+mode: Rule
+#mode: direct/rule/global
+log-level: warning
+#silent/error/warning/info/debug
+geodata-mode: true
+geodata-loader: memconservative
+#standard 标准/ memconservative 内存受限(小内存)设备优化的加载器(默认值)
+unified-delay: true
+tcp-concurrent: true
+external-controller: 0.0.0.0:9090
+#面板默认Meta 可选Yacd 清除浏览器缓存即可重新加载
+external-ui: /data/adb/box_bll/panel/Meta/ #/Meta/Yacd
+secret: ""
+external-ui-url: "https://github.com/MetaCubeX/metacubexd/archive/refs/heads/gh-pages.zip" # 自定义外部用户界面下载地址,此处metacubexd
+enable-process: true
+find-process-mode: strict
+global-client-fingerprint: chrome
+#global-ua: "Mozilla/5.0; AppleWebKit/537.36; Chrome/91.0.4472.114; Safari/537.36; Shadowrocket/1.9.7; meta/1.0.0; Sing/1.1.0" # 全局 UA ,默认clash.meta
+keep-alive-interval: 30
+#控制 Clash 发出 TCP Keep Alive 包的间隔，减少移动设备耗电问题的临时措施。
+#TCP Keep Alive 间隔,单位分钟。此时 Clash 发现并关闭一个无效 TCP 连接用时： 1*keep-alive-interval + 9*keep-alive-interval
+
+geox-url:
+  geosite: "https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download/geosite.dat"
+  geoip: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/geoip-lite.db"
+  mmdb: "https://github.com/MetaCubeX/meta-rules-dat/releases/download/latest/country-lite.mmdb"
+  asn: "https://github.com/xishang0128/geoip/releases/download/latest/GeoLite2-ASN.mmdb"
+geo-auto-update: true # 自动更新 GEO 是否启用,可选 true/false
+geo-update-interval: 24 # 更新间隔,单位小时
+
+profile:
+  store-selected: true
+  store-fake-ip: false
+
+
+sniffer:
+  enable: true
+  force-dns-mapping: true
+  parse-pure-ip: true
+  override-destination: true
+  sniff:
+    HTTP:
+      ports: [80, 8080-8880]
+      override-destination: true
+    TLS:
+      ports: [443, 8443]
+    QUIC:
+      ports: [443, 8443]
+  force-domain:
+    - "+.v2ex.com"
+  skip-domain:
+    - "Mijia Cloud"
+
+
+tun:
+  enable: true
+  device: Meta
+  stack: mixed
+  dns-hijack:
+    - 'any:53'
+    - 'tcp://any:53'
+  auto-route: true
+  auto-detect-interface: true
+
+
+dns:
+  enable: true
+  prefer-h3: true
+  listen: 0.0.0.0:1053
+  ipv6: true
+  enhanced-mode: fake-ip
+#enhanced-mode可选 redir-host 和 fake-ip，fake-ip响应更快但可能带来一些问题
+  fake-ip-range: 198.18.0.1/16
+#默认 DNS, 用于解析 DNS 服务器 的域名，换用IP格式DOH后应该可去除。
+#  default-nameserver:
+#    - 223.5.5.5
+#    - 119.29.29.29
+  nameserver-policy:
+    'geosite:cn,private':
+      - "https://223.5.5.5/dns-query"
+      - "https://120.53.53.53/dns-query"
+  nameserver:
+#    - 119.29.29.29
+#    - 223.5.5.5
+#    - https://doh.pub/dns-query
+#    - https://dns.alidns.com/dns-query
+    - https://223.5.5.5/dns-query
+    - https://120.53.53.53/dns-query
+
+
+p: &p
+  {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 300}}
+u: &u
+  use:
+  - 机场1
+
+
+proxy-providers:
+  机场1:
+    <<: *p
+    url: "https://suc2.sntp.io/baseStr?token=f13a8368217d64ede04ad1a09d53ba3f"
+    path: ./proxy_providers/sub1.yaml
+    #注意！如果您的订阅链接中带有“&”字符，请删掉.
+
+
+proxy-groups:
+   - {name: 🚀 节点选择, type: url-test, use: [机场1]}
+   - {name: Ⓜ️ 微软服务, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
+   - {name: 📢 Google FCM, type: select, proxies: [🚀 节点选择,🌎 全球直连, <<: *u]} 
+   - {name: 🤖 Ai, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
+   - {name: 📺 Emby, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
+   - {name: 🐋 漏网之鱼, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
+   - {name: 🌎 全球直连, type: select, proxies: [DIRECT]}
+
+
+rule-providers:
+    Microsoft:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Microsoft.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml"
+      interval: 86400
+    Google FCM:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Google FCM.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml"
+      interval: 86400      
+    Openai:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Openai.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/OpenAI/OpenAI.yaml"
+      interval: 86400  
+    Copilot:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Copilot.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Copilot/Copilot.yaml"
+      interval: 86400  
+    Claude:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Claude.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Claude/Claude.yaml"
+      interval: 86400  
+    Gemini:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Gemini.yaml
+      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Gemini/Gemini.yaml"
+      interval: 86400                    
+    Emby:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Emby.yaml
+      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/emby.yaml?token=GHSAT0AAAAAACXFI5X3F6TY4E4YOXHC2LAWZW4NWLQ"
+      interval: 86400      
+
+
+rules:
+    - AND,((PROCESS-NAME,mihomo),(NOT,((IN-TYPE,inner)))),REJECT
+    - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
+    - RULE-SET,Microsoft,Ⓜ️ 微软服务
+    - RULE-SET,Google FCM,📢 Google FCM
+    - RULE-SET,Emby,📺 Emby
+    - RULE-SET,Openai,🤖 Ai
+    - RULE-SET,Copilot,🤖 Ai
+    - RULE-SET,Claude,🤖 Ai
+    - RULE-SET,Gemini,🤖 Ai
+    - GEOSITE,CN,🌎 全球直连
+    - GEOIP,private,🌎 全球直连,no-resolve
+    - GEOIP,CN,🌎 全球直连,no-resolve
+    - MATCH,🐋 漏网之鱼
