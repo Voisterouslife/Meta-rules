@@ -111,7 +111,7 @@ proxy-providers:
 proxy-groups:
    - {name: 🚀 节点选择, type: url-test, use: [机场1]}
    - {name: Ⓜ️ 微软服务, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
-   - {name: 📢 Google FCM, type: select, proxies: [🚀 节点选择,🌎 全球直连, <<: *u]} 
+   - {name: 📢 Google FCM, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
    - {name: 🤖 Ai, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
    - {name: 📺 Emby, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
    - {name: 🐋 漏网之鱼, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
