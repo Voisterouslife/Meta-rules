@@ -105,6 +105,7 @@ p: &p
 u: &u
   use:
   - 机场1
+  - 机场2
 
 
 proxy-providers:
@@ -112,16 +113,21 @@ proxy-providers:
     <<: *p
     url: ""
     path: ./proxy_providers/sub1.yaml
+  机场2:
+    <<: *p
+    url: ""
+    path: ./proxy_providers/sub2.yaml
     #注意！如果您的订阅链接中带有“&”字符，请删掉.
 
 
 proxy-groups:
-   - {name: 🚀 节点选择, <<: *u,type: select, proxies: [🌎 全球直连]}
-   - {name: Ⓜ️ 微软服务, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
-   - {name: 📢 Google FCM, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
-   - {name: 🤖 Ai, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
-   - {name: 📺 Emby, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
-   - {name: 🐋 漏网之鱼, type: select, proxies: [🚀 节点选择,🌎 全球直连], <<: *u} 
+   - {name: 🍀 守候网络, use: [机场1], type: select, proxies: [🌎 全球直连]}
+   - {name: ☁️ Cloudflare优选, use: [机场2], type: select, proxies: [🌎 全球直连]}
+   - {name: Ⓜ️ 微软服务, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
+   - {name: 📢 Google FCM, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
+   - {name: 🤖 Ai, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
+   - {name: 📺 Emby, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
+   - {name: 🐋 漏网之鱼, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
    - {name: 🌎 全球直连, type: select, proxies: [DIRECT]}
    - {name: ♻️ 延迟最低, <<: *u, type: url-test}
 
