@@ -8,7 +8,7 @@ mode: Rule
 log-level: warning
 #silent/error/warning/info/debug
 geodata-mode: true
-geodata-loader: memconservative
+geodata-loader: standard
 #standard 标准/ memconservative 内存受限(小内存)设备优化的加载器(默认值)
 unified-delay: true
 tcp-concurrent: true
@@ -186,7 +186,7 @@ rules:
     - RULE-SET,Claude,🤖 Ai
     - RULE-SET,Gemini,🤖 Ai
     - GEOSITE,CN,🌎 全球直连
-    - GEOIP,CN,🌎 全球直连,no-resolve
-    - GEOIP,LAN,🌎 全球直连,no-resolve
-    - GEOIP,private,🌎 全球直连,no-resolve
+    - GEOIP,CN,🌎 全球直连
+    - GEOIP,LAN,🌎 全球直连
+    - GEOIP,private,🌎 全球直连
     - MATCH,🐋 漏网之鱼
