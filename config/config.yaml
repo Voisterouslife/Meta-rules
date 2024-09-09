@@ -103,7 +103,7 @@ u: &u
 proxy-providers:
   机场1:
     <<: *p
-    url: ""
+    url: "
     path: ./proxy_providers/sub1.yaml
   机场2:
     <<: *p
@@ -187,6 +187,4 @@ rules:
     - RULE-SET,Gemini,🤖 Ai
     - GEOSITE,CN,🌎 全球直连
     - GEOIP,CN,🌎 全球直连
-    - GEOIP,LAN,🌎 全球直连
-    - GEOIP,private,🌎 全球直连
     - MATCH,🐋 漏网之鱼
