@@ -33,32 +33,34 @@ geox-url:
 geo-auto-update: true # 自动更新 GEO 是否启用,可选 true/false
 geo-update-interval: 24 # 更新间隔,单位小时
 
+
+geoip:
+  patch: ./ASN.mmdb
+
+
 profile:
   store-selected: true
-  store-fake-ip: false
+  store-fake-ip: true
 
 
 sniffer:
   enable: true
-  parse-pure-ip: true
   force-dns-mapping: true
-  override-destination: false
+  parse-pure-ip: true
+  override-destination: true
   sniff:
     HTTP:
-      ports:
-        - 80
-        - 443
-      override-destination: false
+      ports: [80, 8080-8880]
     TLS:
-      ports:
-        - 443
+      ports: [443, 8443]
     QUIC:
-      ports:
-        - 443
+      ports: [443, 8443]
+  force-domain:
+    - "+.v2ex.com"
   skip-domain:
-    - +.push.apple.com
-
-
+    - "Mijia Cloud"
+    
+    
 tun:
   enable: true
   device: Meta
@@ -73,32 +75,22 @@ tun:
 
 dns:
   enable: true
+  prefer-h3: true
   ipv6: true
   listen: 0.0.0.0:1053
-  use-hosts: false
-  default-nameserver:
-    - 119.29.29.29
-    - 8.8.8.8
-    - 1.1.1.1
-  nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  fake-ip-range: 198.18.0.1/16
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.0/15
   fake-ip-filter:
     - "*"
-    - +.lan
-    - +.local
-    - time.*.com
-    - ntp.*.com
-    - +.market.xiaomi.com
-  enhanced-mode: fake-ip
-  use-system-hosts: false
-  proxy-server-nameserver:
-    - https://doh.pub/dns-query
-    - https://dns.alidns.com/dns-query
-  respect-rules: false
-  fallback: []
-  fallback-filter: {}
+    - "+.lan"
+    - "connect.rom.miui.com"
+    - "localhost.ptlogin2.qq.com"
+  nameserver:
+    - tls://223.5.5.5
+    - tls://223.6.6.6
+    - tls://1.12.12.12
+    - tls://120.53.53.53
+
 
 p: &p
   {type: http, interval: 86400, health-check: {enable: true, url: https://www.gstatic.com/generate_204, interval: 300}}
@@ -146,7 +138,6 @@ rule-providers:
       format: yaml
       path: ./rule/Google FCM.yaml
       url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml"
-      interval: 86400      
     Openai:
       type: http
       behavior: classical
@@ -195,6 +186,7 @@ rules:
     - RULE-SET,Claude,🤖 Ai
     - RULE-SET,Gemini,🤖 Ai
     - GEOSITE,CN,🌎 全球直连
-    - GEOIP,private,🌎 全球直连,no-resolve
     - GEOIP,CN,🌎 全球直连,no-resolve
+    - GEOIP,LAN,🌎 全球直连,no-resolve
+    - GEOIP,private,🌎 全球直连,no-resolve
     - MATCH,🐋 漏网之鱼
