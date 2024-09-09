@@ -81,15 +81,25 @@ dns:
   enhanced-mode: fake-ip
   fake-ip-range: 198.18.0.0/15
   fake-ip-filter:
-    - "*"
-    - "+.lan"
-    - "connect.rom.miui.com"
-    - "localhost.ptlogin2.qq.com"
+    - '+.lan'
+    - '+.local'
+  default-nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+    - 114.114.114.114
+    - '[2402:4e00::]'
+    - '[2400:3200::1]'
   nameserver:
-    - tls://223.5.5.5
-    - tls://223.6.6.6
-    - tls://1.12.12.12
-    - tls://120.53.53.53
+    - 'tls://8.8.4.4#dns'
+    - 'tls://1.0.0.1#dns'
+    - 'tls://[2001:4860:4860::8844]#dns'
+    - 'tls://[2606:4700:4700::1001]#dns'
+  proxy-server-nameserver:
+    - https://doh.pub/dns-query
+  nameserver-policy:
+    "geosite:cn,private":
+      - https://doh.pub/dns-query
+      - https://dns.alidns.com/dns-query
 
 
 p: &p
@@ -103,7 +113,7 @@ u: &u
 proxy-providers:
   机场1:
     <<: *p
-    url: "
+    url: ""
     path: ./proxy_providers/sub1.yaml
   机场2:
     <<: *p
