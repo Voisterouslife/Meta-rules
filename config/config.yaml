@@ -120,7 +120,9 @@ proxy-providers:
 proxy-groups:
    - {name: 🍀 守候网络, use: [机场1], type: select, proxies: [🌎 全球直连]}
    - {name: ☁️ Cloudflare优选, use: [机场2], type: select, proxies: [🌎 全球直连]}
+   - {name: 🎮 游戏代理, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
    - {name: Ⓜ️ 微软服务, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
+   - {name: ⬇️ 下载, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
    - {name: 📢 Google FCM, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
    - {name: 🤖 Ai, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
    - {name: 📺 Emby, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
@@ -181,6 +183,18 @@ rule-providers:
 
 
 rules:
+    - 'DOMAIN-KEYWORD,epicgames,DIRECT'
+    - 'DOMAIN-KEYWORD,tencent,DIRECT'
+    - 'DOMAIN-KEYWORD,qq,DIRECT'
+    - 'DOMAIN-KEYWORD,bili,DIRECT'
+    - 'DOMAIN-KEYWORD,ubi,DIRECT'
+    - 'DOMAIN-KEYWORD,baidu,DIRECT'
+    - 'DOMAIN-KEYWORD,bkssl,DIRECT'
+    - 'PROCESS-NAME,Backrooms-Win64-Shipping.exe,DIRECT'
+    - 'PROCESS-NAME,Lethal Company.exe,DIRECT'
+    - 'PROCESS-NAME,Game.exe,🎮 游戏代理'
+    - 'DOMAIN-KEYWORD,steam,⬇️ 下载'
+    - 'PROCESS-NAME,Onedrive.exe,⬇️ 下载
     - AND,((PROCESS-NAME,mihomo),(NOT,((IN-TYPE,inner)))),REJECT
     - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
     - RULE-SET,Microsoft,Ⓜ️ 微软服务
