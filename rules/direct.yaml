@@ -1,5 +1,5 @@
 payload:
-  - 'DOMAIN-KEYWORD,epicgames,DIRECT'
-  - 'DOMAIN-KEYWORD,ubi,DIRECT'
-  - 'PROCESS-NAME,Backrooms-Win64-Shipping.exe,DIRECT'
-  - 'PROCESS-NAME,Lethal Company.exe,DIRECT'
+  - DOMAIN-KEYWORD,epicgames
+  - DOMAIN-KEYWORD,ubi
+  - PROCESS-NAME,Backrooms-Win64-Shipping.exe
+  - PROCESS-NAME,Lethal Company.exe
