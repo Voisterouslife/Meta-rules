@@ -1,0 +1,5 @@
+payload:
+  - 'DOMAIN-KEYWORD,epicgames,DIRECT'
+  - 'DOMAIN-KEYWORD,ubi,DIRECT'
+  - 'DOMAIN-KEYWORD,steam,⬇️ 下载'
+  - 'PROCESS-NAME,Onedrive.exe,⬇️ 下载'
