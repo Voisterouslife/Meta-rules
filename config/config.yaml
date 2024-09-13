@@ -1,3 +1,18 @@
+Skip to content
+ 
+Search Gists
+Search...
+All gists
+Back to GitHub
+@Voisterouslife
+Voisterouslife/config.yaml Secret
+Last active 4 minutes ago
+Code
+Revisions
+16
+Clone this repository at &lt;script src=&quot;https://gist.github.com/Voisterouslife/85a200f98142c715faf6dc2a4fade27d.js&quot;&gt;&lt;/script&gt;
+<script src="https://gist.github.com/Voisterouslife/85a200f98142c715faf6dc2a4fade27d.js"></script>
+config.yaml
 mixed-port: 7890
 redir-port: 7891
 tproxy-port: 1536
@@ -118,33 +133,51 @@ proxy-providers:
 
 
 proxy-groups:
-   - {name: 🍀 守候网络, use: [机场1], type: select, proxies: [🌎 全球直连]}
-   - {name: ☁️ Cloudflare优选, use: [机场2], type: select, proxies: [🌎 全球直连]}
-   - {name: 🎮 游戏代理, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: Ⓜ️ 微软服务, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: ⬇️ 下载, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: 📢 Google FCM, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: 🤖 Ai, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: 📺 Emby, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: 🐋 漏网之鱼, type: select, proxies: [🍀 守候网络,☁️ Cloudflare优选,🌎 全球直连], <<: *u} 
-   - {name: 🌎 全球直连, type: select, proxies: [DIRECT]}
-   - {name: ♻️ 延迟最低, <<: *u, type: url-test}
+   - {name: 守候网络, use: [机场1], type: select, proxies: [全球直连],
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/shouhou(4).png"}
+   - {name: Cloudflare优选, use: [机场2], type: select, proxies: [全球直连],
+     icon: "https://raw.githubusercontent.com/xushier/HD-Icons/main/circle/Cloudflare_B.png"}
+   - {name: 游戏代理, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/master/icon/game.png"}
+   - {name: 下载, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/direct.png"}
+   - {name: Google FCM, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/google(1).png"}
+   - {name: Ai, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/ChatGPT-green.png"}
+   - {name: Emby, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/emby.png"}
+   - {name: 漏网之鱼, type: select, proxies: [守候网络,Cloudflare优选,全球直连], <<: *u,
+     icon: "https://raw.githubusercontent.com/lige47/QuanX-icon-rule/main/icon/omofun.png"}
+   - {name: 全球直连, type: select, proxies: [DIRECT],
+     icon: "https://raw.githubusercontent.com/Orz-3/mini/master/Color/Global.png"}
 
 
 rule-providers:
-    Microsoft:
-      type: http
-      behavior: classical
-      format: yaml
-      path: ./rule/Microsoft.yaml
-      url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/Microsoft/Microsoft.yaml"
-      interval: 86400
     Google FCM:
       type: http
       behavior: classical
       format: yaml
       path: ./rule/Google FCM.yaml
       url: "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Clash/GoogleFCM/GoogleFCM.yaml"
+    Download:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Download.yaml
+      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/download.yaml"
+    Game:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Game.yaml
+      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/game.yaml"
+    Direct:
+      type: http
+      behavior: classical
+      format: yaml
+      path: ./rule/Direct.yaml
+      url: "https://raw.githubusercontent.com/Voisterouslife/Meta-rules/main/rules/direct.yaml"
     Openai:
       type: http
       behavior: classical
@@ -183,27 +216,17 @@ rule-providers:
 
 
 rules:
-    - 'DOMAIN-KEYWORD,epicgames,DIRECT'
-    - 'DOMAIN-KEYWORD,tencent,DIRECT'
-    - 'DOMAIN-KEYWORD,qq,DIRECT'
-    - 'DOMAIN-KEYWORD,bili,DIRECT'
-    - 'DOMAIN-KEYWORD,ubi,DIRECT'
-    - 'DOMAIN-KEYWORD,baidu,DIRECT'
-    - 'DOMAIN-KEYWORD,bkssl,DIRECT'
-    - 'PROCESS-NAME,Backrooms-Win64-Shipping.exe,DIRECT'
-    - 'PROCESS-NAME,Lethal Company.exe,DIRECT'
-    - 'PROCESS-NAME,Game.exe,🎮 游戏代理'
-    - 'DOMAIN-KEYWORD,steam,⬇️ 下载'
-    - 'PROCESS-NAME,Onedrive.exe,⬇️ 下载
     - AND,((PROCESS-NAME,mihomo),(NOT,((IN-TYPE,inner)))),REJECT
     - AND,((PROCESS-NAME,clash),(NOT,((IN-TYPE,inner)))),REJECT
-    - RULE-SET,Microsoft,Ⓜ️ 微软服务
-    - RULE-SET,Google FCM,📢 Google FCM
-    - RULE-SET,Emby,📺 Emby
-    - RULE-SET,Openai,🤖 Ai
-    - RULE-SET,Copilot,🤖 Ai
-    - RULE-SET,Claude,🤖 Ai
-    - RULE-SET,Gemini,🤖 Ai
-    - GEOSITE,CN,🌎 全球直连,no-resolve
-    - GEOIP,CN,🌎 全球直连,no-resolve
-    - MATCH,🐋 漏网之鱼
+    - RULE-SET,Google FCM,Google FCM
+    - RULE-SET,Download,下载
+    - RULE-SET,Direct,全球直连
+    - RULE-SET,Game,游戏代理
+    - RULE-SET,Emby,Emby
+    - RULE-SET,Openai,Ai
+    - RULE-SET,Copilot,Ai
+    - RULE-SET,Claude,Ai
+    - RULE-SET,Gemini,Ai
+    - GEOSITE,CN,全球直连,no-resolve
+    - GEOIP,CN,全球直连,no-resolve
+    - MATCH,漏网之鱼
