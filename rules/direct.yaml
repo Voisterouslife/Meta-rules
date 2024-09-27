@@ -3,6 +3,3 @@ payload:
   - DOMAIN-KEYWORD,ubi
   - PROCESS-NAME,Backrooms-Win64-Shipping.exe
   - PROCESS-NAME,Lethal Company.exe
-  - PROCESS-NAME,finalshell.exe
-  - PROCESS-NAME,java.exe
-
