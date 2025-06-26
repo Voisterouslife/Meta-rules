@@ -1,3 +1,4 @@
 payload:
   - PROCESS-NAME,Game.exe
+  - PROCESS-NAME,r5apex_dx12.exe
   
