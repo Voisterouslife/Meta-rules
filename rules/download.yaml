@@ -1,3 +1,4 @@
 payload:
   - DOMAIN-SUFFIX,steam
+  - DOMAIN-SUFFIX,,epicgames
   - PROCESS-NAME,Onedrive.exe
