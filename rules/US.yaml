@@ -1,6 +1,6 @@
 payload:
-  - DOMAIN-SUFFIX,pilipiliultra.com
-  - DOMAIN-SUFFIX,zox.show
-  - DOMAIN-SUFFIX,hypixel.net
-  - DOMAIN-SUFFIX,cloudflare
-  - DOMAIN-SUFFIX,exhentai
+  - DOMAIN-KEYWORD,pilipiliultra.com
+  - DOMAIN-KEYWORD,zox.show
+  - DOMAIN-KEYWORD,hypixel.net
+  - DOMAIN-KEYWORD,cloudflare
+  - DOMAIN-KEYWORD,exhentai
