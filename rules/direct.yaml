@@ -1,5 +1,4 @@
-payload:
-  - DOMAIN-SUFFIX,,ubi   
+payload: 
   - PROCESS-NAME,SCPSL.exe
   - PROCESS-NAME,Backrooms-Win64-Shipping.exe
   - PROCESS-NAME,Inside the Backrooms.exe
