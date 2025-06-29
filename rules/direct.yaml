@@ -1,7 +1,8 @@
 payload:
-  - DOMAIN-SUFFIX,,ubi
+  - DOMAIN-SUFFIX,,ubi   
+  - PROCESS-NAME,SCPSL.exe
   - PROCESS-NAME,Backrooms-Win64-Shipping.exe
   - PROCESS-NAME,Inside the Backrooms.exe
   - PROCESS-NAME,Lethal Company.exe
   - PROCESS-NAME,BlazblueEntropyEffect.exe
-  - PROCESS-NAME,SCPSL.exe
+
