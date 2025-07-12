@@ -4,4 +4,4 @@ payload:
   - DOMAIN-KEYWORD,hypixel.net
   - DOMAIN-KEYWORD,cloudflare
   - DOMAIN-KEYWORD,exhentai
-  - DOMAIN-KEYWORD,android.googleapis.com
+  - PROCESS-NAME,com.google.uid.shared
