@@ -40,7 +40,7 @@ profile:
 # TUN 模式
 tun:
   exclude-package: []
-  enable: false
+  enable: true
   device: Meta
   stack: mixed
   dns-hijack:
