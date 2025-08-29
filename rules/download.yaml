@@ -1,3 +1,4 @@
 payload:
   - PROCESS-NAME,Onedrive.exe
   - DOMAIN-KEYWORD,steamcontent
+  - DOMAIN-KEYWORD,samsungmobile
