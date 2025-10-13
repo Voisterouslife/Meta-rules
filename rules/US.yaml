@@ -2,9 +2,5 @@ payload:
   - DOMAIN-KEYWORD,pilipiliultra.com
   - DOMAIN-KEYWORD,zox.show
   - DOMAIN-KEYWORD,hypixel.net
-  - DOMAIN-KEYWORD,cloudflare
   - DOMAIN-KEYWORD,exhentai
-  - DOMAIN-KEYWORD,google
-  - DOMAIN-KEYWORD,bing
-  - PROCESS-NAME,com.google.uid.shared
-  - PROCESS-NAME,com.google.android.googlequicksearchbox
+
