@@ -7,3 +7,4 @@ payload:
   - PROCESS-NAME,BlazblueEntropyEffect.exe
   - PROCESS-NAME,BETGameSteam-Win64-Shipping.exe
   - PROCESS-NAME,SlayTheSpire2.exe
+  - PROCESS-NAME,com.hanvonscanner.app
