@@ -6,7 +6,6 @@ payload:
   - PROCESS-NAME,Lethal Company.exe
   - PROCESS-NAME,BlazblueEntropyEffect.exe
   - PROCESS-NAME,BETGameSteam-Win64-Shipping.exe
-  - PROCESS-NAME,SlayTheSpire2.exe
   - PROCESS-NAME,com.hanvonscanner.app
   - PROCESS-NAME,com.hpbr.bosszhipin
   - PROCESS-NAME,com.samsung.android.server.wifi.mobilewips
