@@ -11,4 +11,3 @@ payload:
   - PROCESS-NAME,com.samsung.android.server.wifi.mobilewips
   - PROCESS-NAME,White Knuckle.exe
   - PROCESS-NAME,RvControlSvc.exe
-  - PROCESS-NAME,isaac-ng.exe
