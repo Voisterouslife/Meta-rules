@@ -12,4 +12,4 @@ payload:
   - PROCESS-NAME,White Knuckle.exe
   - PROCESS-NAME,RvControlSvc.exe
   - PROCESS-NAME,isaac-ng.exe
-  - DOMAIN,p2p-tyo3.discovery.steamserver.net
+  - DOMAIN,p2p
