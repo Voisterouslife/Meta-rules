@@ -12,4 +12,4 @@ payload:
   - PROCESS-NAME,White Knuckle.exe
   - PROCESS-NAME,RvControlSvc.exe
   - PROCESS-NAME,isaac-ng.exe
-  - DOMAIN-KEYWORD,p2p
+
