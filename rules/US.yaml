@@ -2,3 +2,4 @@ payload:
   - DOMAIN-KEYWORD,hypixel.net
   - DOMAIN-KEYWORD,exhentai
   - DOMAIN-KEYWORD,bing.com
+  - PROCESS-NAME,com.google.android.apps.bard
