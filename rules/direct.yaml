@@ -12,6 +12,3 @@ payload:
   - PROCESS-NAME,White Knuckle.exe
   - PROCESS-NAME,RvControlSvc.exe
   - PROCESS-NAME,AweSun.exe
-  - PROCESS-NAME,isaac-ng.exe
-  - DOMAIN-KEYWORD,p2p
-
