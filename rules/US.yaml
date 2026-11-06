@@ -3,3 +3,4 @@ payload:
   - DOMAIN-KEYWORD,exhentai
   - DOMAIN-KEYWORD,bing.com
   - PROCESS-NAME,com.google.android.apps.bard
+  - PROCESS-NAME,com.google.android.googlequicksearchbox
